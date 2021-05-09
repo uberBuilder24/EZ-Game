@@ -4,7 +4,7 @@ We made Pygame easy-to-use! Comes with window creation, sprite creation, sprite 
 
 ## Documentation
 ### Installation
-It's very easy to setup. You just need to do the following:
+It's very easy to setup. You just need to enter the following into your Command Line:
 ```sh
 cd /dir/to/project/
 git clone https://github.com/uberBuilder24/EZ-Game
