@@ -29,4 +29,4 @@ colors = gameClass.Colors() # This is just a class filled with RGB color codes.
 
 `game.draw_text(text, font, fontSize, position, color)` - This will create a visible text object.
 
-`game.colliding(self, obj1, obj2)` - This will check if a Sprite is colliding with another Sprite.
+`game.colliding(obj1, obj2)` - This will check if a Sprite is colliding with another Sprite.
