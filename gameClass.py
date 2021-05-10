@@ -48,10 +48,7 @@ class Window:
         self.WIN.blit(RENDERED, pos)
     
     def colliding(self, obj1, obj2):
-        if obj1.colliderect(obj2):
-            return True
-        else:
-            return False
+        return obj1.colliderect(obj2)                      
 
 # Colour Codes
 
