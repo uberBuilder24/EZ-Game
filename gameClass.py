@@ -30,6 +30,13 @@ class Window:
         img = eval(f"self.{name}_new_img")
         pos = (eval(f"self.{name}.x"), eval(f"self.{name}.y"))
         self.WIN.blit(img, pos)
+
+    def draw_shape(self, name, shape, pos, size, color):
+        shape = shape.lower().title()
+        if not name in systemVars:
+            exec(f"pygame.draw.rect(self.WIN, {color}, pygame.Rect({pos[0]}, {pos[1]}, {size[0]}, {size[1]}))")
+        else:
+            raise SystemVariable(f"You cannot name a character any of these names: {', '.join(systemVars)}.")
     
     def scale_sprite(self, name, size):
         exec(f"self.{name}_new_img = pygame.transform.scale(self.{name}_new_img, {size})")
@@ -48,10 +55,7 @@ class Window:
         self.WIN.blit(RENDERED, pos)
     
     def colliding(self, obj1, obj2):
-        if obj1.colliderect(obj2):
-            return True
-        else:
-            return False
+        return obj1.colliderect(obj2)
 
 # Colour Codes
 
