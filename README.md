@@ -21,6 +21,8 @@ colors = gameClass.Colors() # This is just a class filled with RGB color codes.
 
 `game.draw_sprite(name)` - This will make an invisible Sprite visible.
 
+`game.draw_shape(name, shape, pos, size, color)` - This will make a visible shape.
+
 `game.scale_sprite(name, size)` - This will change the size of a Sprite.
 
 `game.rotate_sprite(name, direction)` - This will turn a Sprite.

@@ -31,7 +31,7 @@ class Window:
         pos = (eval(f"self.{name}.x"), eval(f"self.{name}.y"))
         self.WIN.blit(img, pos)
 
-    def draw_shape(self, name, shape, pos, size, color):
+    def draw_shape(self, name, shape, pos, size, color=(0, 0, 0)):
         shape = shape.lower().title()
         if not name in systemVars:
             exec(f"pygame.draw.rect(self.WIN, {color}, pygame.Rect({pos[0]}, {pos[1]}, {size[0]}, {size[1]}))")
