@@ -35,7 +35,7 @@ game = Game()
 #### Sprite Subfunctions
 `game.sprites.new_sprite(name, pos, size)` - Creates an invisible Sprite object.
 
-`game.sprites.draw_sprite(name, imgSrc, dir, opacity)` - Makes an invisible Sprite object visible in an image form.
+`game.sprites.draw_sprite(name, imgSrc, dir, background, opacity)` - Makes an invisible Sprite object visible in an image form. The 'background' boolean will choose if you want a transparent background, or to be able to fade the image. Sadly, they don't work together.
 
 `game.sprites.draw_shape(name, shape, color)` - Makes an invisible Sprite object visible in an shape form.
 

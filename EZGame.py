@@ -19,12 +19,15 @@ class Sprites:
         else:
             raise SystemVariable(f"You cannot name a character any of these names: {', '.join(systemVars)}.")
 
-    def draw_sprite(self, name, imgSrc, dir=0, opacity=255):
+    def draw_sprite(self, name, imgSrc, dir=0, background=False, opacity=255):
         pos = (eval(f"self.{name}.x"), eval(f"self.{name}.y"))
         size = (eval(f"self.{name}.width"), eval(f"self.{name}.height"))
         dir += eval(f"self.{name}_rotation")
 
-        exec(f"self.{name}_img = pygame.image.load('{imgSrc}').convert()")
+        if background == False:
+            exec(f"self.{name}_img = pygame.image.load('{imgSrc}').convert_alpha()")
+        else:
+            exec(f"self.{name}_img = pygame.image.load('{imgSrc}').convert()")
         exec(f"self.{name}_new_img = pygame.transform.rotate(pygame.transform.scale(self.{name}_img, {size}), {dir})")
         exec(f"self.{name}_new_img.set_alpha({opacity})")
 
