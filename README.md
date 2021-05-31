@@ -10,25 +10,55 @@ cd /dir/to/project/
 git clone https://github.com/uberBuilder24/EZ-Game
 pip install -r requirements.txt
 ```
-After you download the source code and all dependencies, you you need to import the library. To do so, add `import pygame` and `import gameClass` to the top of your Python file. Make sure the `gameClass.py` file and the file you wish to use the library in are in the same directory. To initialize the library, add the following code after your imports.
+After you download the source code and all dependencies, you you need to import the library. To do so, add:
 ```py
-game = gameClass.Window()
-colors = gameClass.Colors() # This is just a class filled with RGB color codes.
+import pygame
+from EZGame import Game, colors
+
+game = Game()
 ```
 
 ### Functions
-`game.new_sprite(name, position, size, image, direction)` - This will create an invisible Sprite. You will get an error if you name it after an important variable.
+#### Main Game Functions
+`game.handle_fps()` - Get better framerates by setting an FPS limit.
 
-`game.draw_sprite(name)` - This will make an invisible Sprite visible.
+`game.set_background(color)` - Set a background color for your window.
 
-`game.draw_shape(name, shape, pos, size, color)` - This will make a visible shape.
+`game.is_colliding(obj1, obj2)` - Returns a True/False statement telling you if 2 objects are colliding.
 
-`game.scale_sprite(name, size)` - This will change the size of a Sprite.
+`game.is_hovering(obj)` - Returns a True/False statement telling you if the mouse is hovering something.
 
-`game.rotate_sprite(name, direction)` - This will turn a Sprite.
+`game.key_pressed(pressed_keys, key)` - Returns a True/False statement telling you if a certain key was pressed.
 
-`game.preview_text(text, font, fontSize, position, color)` - This will create an invisible text object.
+`game.set_cursor(cursor)` - Sets your cursor to be different from the classic arrow.
 
-`game.draw_text(text, font, fontSize, position, color)` - This will create a visible text object.
+#### Sprite Subfunctions
+`game.sprites.new_sprite(name, pos, size)` - Creates an invisible Sprite object.
 
-`game.colliding(obj1, obj2)` - This will check if a Sprite is colliding with another Sprite.
+`game.sprites.draw_sprite(name, imgSrc, dir, opacity)` - Makes an invisible Sprite object visible in an image form.
+
+`game.sprites.draw_shape(name, shape, color)` - Makes an invisible Sprite object visible in an shape form.
+
+`game.sprites.scale_sprite(name, size)` - Makes a Sprite's image object bigger/smaller.
+
+`game.sprites.rotate_sprite(name, dir)` - Turns a Sprite's image object.
+
+#### Text Subfunctions
+`game.text.preview(text, font, fontSize, pos, color)` - Returns a Pygame text object.
+
+`game.text.render(text, font, fontSize, pos, color)` - Renders a Pygame text object.
+
+#### Colors
+```py
+colors.BLACK
+colors.WHITE
+colors.RED
+colors.ORANGE
+colors.YELLOW
+colors.GREEN
+colors.MINT
+colors.CYAN
+colors.BLUE
+colors.PURPLE
+colors.PINK
+```
