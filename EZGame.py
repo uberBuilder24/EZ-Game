@@ -70,7 +70,7 @@ class Game:
         self.WIN = pygame.display.set_mode((WIDTH, HEIGHT))
         self.TITLE = TITLE
         if ICON != None:
-            self.ICON = pygame.image.load(f"'ICON'")
+            self.ICON = pygame.image.load(f"{ICON}")
             pygame.display.set_icon(self.ICON)
         self.FPS = FPS
 
