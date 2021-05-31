@@ -49,6 +49,8 @@ game = Game()
 `game.text.render(text, font, fontSize, pos, color)` - Renders a Pygame text object.
 
 #### Colors
+__**Defaults**__:
+
 ```py
 colors.BLACK
 colors.WHITE
@@ -62,3 +64,7 @@ colors.BLUE
 colors.PURPLE
 colors.PINK
 ```
+
+__**Custom**__:
+
+`colors.hex_to_rgb(hex)` - Turns a HEX code (#ff0000) into a RGB code that works with EZ-Game.

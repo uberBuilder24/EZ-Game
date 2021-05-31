@@ -1,6 +1,7 @@
 # Imports
 
 import pygame
+from PIL import ImageColor
 import os
 
 systemVars = ["WIDTH", "HEIGHT", "WIN", "TITLE", "ICON", "FPS"]
@@ -14,14 +15,16 @@ class Sprites:
     def new_sprite(self, name, pos, size):
         if not name in systemVars:
             exec(f"self.{name} = pygame.Rect({pos[0]}, {pos[1]}, {size[0]}, {size[1]})")
+            exec(f"self.{name}_rotation = 0")
         else:
             raise SystemVariable(f"You cannot name a character any of these names: {', '.join(systemVars)}.")
 
     def draw_sprite(self, name, imgSrc, dir=0, opacity=255):
         pos = (eval(f"self.{name}.x"), eval(f"self.{name}.y"))
         size = (eval(f"self.{name}.width"), eval(f"self.{name}.height"))
+        dir += eval(f"self.{name}_rotation")
 
-        exec(f"self.{name}_img = pygame.image.load({imgSrc}).convert()")
+        exec(f"self.{name}_img = pygame.image.load('{imgSrc}').convert()")
         exec(f"self.{name}_new_img = pygame.transform.rotate(pygame.transform.scale(self.{name}_img, {size}), {dir})")
         exec(f"self.{name}_new_img.set_alpha({opacity})")
 
@@ -38,10 +41,11 @@ class Sprites:
         exec(f"pygame.draw.rect(self.WIN, {color}, pygame.Rect({pos[0]}, {pos[1]}, {size[0]}, {size[1]}))")
     
     def scale_sprite(self, name, size):
-        exec(f"self.{name}_new_img = pygame.transform.scale(self.{name}_new_img, {size})")
+        exec(f"self.{name}.width = {size[0]}")
+        exec(f"self.{name}.height = {size[1]}")
 
     def rotate_sprite(self, name, dir):
-        exec(f"self.{name}_new_img = pygame.transform.rotate(self.{name}_new_img, {dir})")
+        exec(f"self.{name}_rotation = {dir}")
 
 class Text:
     def __init__(self, WIN):
@@ -56,22 +60,6 @@ class Text:
         FONT = pygame.font.SysFont(font, fontSize)
         RENDERED = FONT.render(text, 1, color)
         self.WIN.blit(RENDERED, pos)
-    
-class __Colors:
-    def __init__(self):
-        self.BLACK = (0, 0, 0)
-        self.WHITE = (255, 255, 255)
-        self.RED = (222, 33, 20)
-        self.ORANGE = (255, 170, 0)
-        self.YELLOW = (255, 255, 0)
-        self.GREEN = (12, 235, 34)
-        self.MINT = (97, 255, 202)
-        self.CYAN = (34, 227, 224)
-        self.BLUE = (45, 141, 237)
-        self.PURPLE = (150, 40, 235)
-        self.PINK = (255, 179, 250)
-
-colors = __Colors()
 
 # Main Class
 
@@ -82,7 +70,7 @@ class Game:
         self.WIN = pygame.display.set_mode((WIDTH, HEIGHT))
         self.TITLE = TITLE
         if ICON != None:
-            self.ICON = pygame.image.load(ICON)
+            self.ICON = pygame.image.load(f"'ICON'")
             pygame.display.set_icon(self.ICON)
         self.FPS = FPS
 
@@ -101,17 +89,46 @@ class Game:
         self.WIN.fill(color)
     
     def is_colliding(self, obj1, obj2):
-        return obj1.colliderect(obj2)
+        if obj1.colliderect(obj2):
+            return True
+        else:
+            return False
     
     def is_hovering(self, obj):
-        self.new_sprite("mouseHover", (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1]), (10, 10))
-        return self.is_colliding(self.mouseHover, obj)
+        self.sprites.new_sprite("mouseHover", (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1]), (10, 10))
+        return self.is_colliding(self.sprites.mouseHover, obj)
     
     def key_pressed(self, pressed_keys, key):
-        return pressed_keys[key]
+        if pressed_keys[key]:
+            return True
+        else:
+            return False
 
     def set_cursor(self, cursor: str):
         exec(f"pygame.mouse.set_cursor(*pygame.cursors.{cursor})")
+
+# Colors
+
+class __Colors:
+    def __init__(self):
+        self.BLACK = (0, 0, 0)
+        self.WHITE = (255, 255, 255)
+        self.RED = (222, 33, 20)
+        self.ORANGE = (255, 170, 0)
+        self.YELLOW = (255, 255, 0)
+        self.GREEN = (12, 235, 34)
+        self.MINT = (97, 255, 202)
+        self.CYAN = (34, 227, 224)
+        self.BLUE = (45, 141, 237)
+        self.PURPLE = (150, 40, 235)
+        self.PINK = (255, 179, 250)
+    
+    def hex_to_rgb(self, hex):
+        if not hex.startswith("#"):
+            hex = f"#{hex}"
+        return ImageColor.getrgb(hex)
+
+colors = __Colors()
 
 # Errors
 
