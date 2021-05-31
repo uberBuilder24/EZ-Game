@@ -50,6 +50,11 @@ class Sprites:
     def rotate_sprite(self, name, dir):
         exec(f"self.{name}_rotation = {dir}")
 
+class Events:
+    def __init__(self):
+        self.MouseMotion = 4
+        self.MouseDown = 5
+
 class Text:
     def __init__(self, WIN):
         self.WIN = WIN
@@ -78,6 +83,7 @@ class Game:
         self.FPS = FPS
 
         self.sprites = Sprites(self.WIN)
+        self.events = Events(self.WIN)
         self.text = Text(self.WIN)
         
         pygame.display.set_caption(TITLE)

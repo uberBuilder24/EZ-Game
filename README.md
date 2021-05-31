@@ -43,6 +43,11 @@ game = Game()
 
 `game.sprites.rotate_sprite(name, dir)` - Turns a Sprite's image object.
 
+#### Event Variables
+`game.events.MouseMotion` - Returns the Pygame event for Mouse Motion.
+
+`game.events.MouseDown` - Returns the Pygame event for a Mouse Click.
+
 #### Text Subfunctions
 `game.text.preview(text, font, fontSize, pos, color)` - Returns a Pygame text object.
 
