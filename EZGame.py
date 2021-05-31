@@ -94,8 +94,8 @@ class Game:
         clock = pygame.time.Clock()
         clock.tick(self.FPS)
 
-    def set_background(self, media, mediaType=False):
-        if mediaType == False:
+    def set_background(self, media, image=False):
+        if image == False:
             self.WIN.fill(media)
         else:
             self.WIN.blit(media, [0, 0])
