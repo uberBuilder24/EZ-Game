@@ -94,8 +94,11 @@ class Game:
         clock = pygame.time.Clock()
         clock.tick(self.FPS)
 
-    def set_background(self, color):
-        self.WIN.fill(color)
+    def set_background(self, media, mediaType=False):
+        if mediaType == False:
+            self.WIN.fill(media)
+        else:
+            self.WIN.blit(media, [0, 0])
     
     def is_colliding(self, obj1, obj2):
         if obj1.colliderect(obj2):
