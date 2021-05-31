@@ -83,7 +83,7 @@ class Game:
         self.FPS = FPS
 
         self.sprites = Sprites(self.WIN)
-        self.events = Events(self.WIN)
+        self.events = Events()
         self.text = Text(self.WIN)
         
         pygame.display.set_caption(TITLE)
