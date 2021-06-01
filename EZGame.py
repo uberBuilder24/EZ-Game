@@ -1,10 +1,10 @@
 # Imports
 
 import pygame
-from PIL import ImageColor
 import os
 
 systemVars = ["WIDTH", "HEIGHT", "WIN", "TITLE", "ICON", "FPS"]
+__getColor = lambda hx: tuple(int(hx[i:i + 2], 16) for i in (0, 2, 4))
 
 # Subclasses
 
@@ -136,9 +136,7 @@ class __Colors:
         self.PINK = (255, 179, 250)
     
     def hex_to_rgb(self, hex):
-        if not hex.startswith("#"):
-            hex = f"#{hex}"
-        return ImageColor.getrgb(hex)
+        return __getColor(hex.strip("#"))
 
 colors = __Colors()
 
