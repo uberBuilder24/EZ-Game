@@ -160,7 +160,8 @@ class Game:
         if image == False:
             self.WIN.fill(media)
         else:
-            self.WIN.blit(media, [0, 0])
+            background = pygame.image.load(media)
+            self.WIN.blit(background, (0, 0))
     
     def is_colliding(self, obj1, obj2):
         if obj1.colliderect(obj2):
