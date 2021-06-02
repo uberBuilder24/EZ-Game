@@ -3,8 +3,12 @@
 import pygame
 import os
 
+pygame.init()
+pygame.mixer.init()
+pygame.font.init()
+
 systemVars = ["WIDTH", "HEIGHT", "WIN", "TITLE", "ICON", "FPS"]
-__getColor = lambda hx: tuple(int(hx[i:i + 2], 16) for i in (0, 2, 4))
+getColor = lambda hx: tuple(int(hx[i:i + 2], 16) for i in (0, 2, 4))
 
 # Subclasses
 
@@ -43,17 +47,18 @@ class Sprites:
 
         exec(f"pygame.draw.rect(self.WIN, {color}, pygame.Rect({pos[0]}, {pos[1]}, {size[0]}, {size[1]}))")
     
+    def move_sprite(self, name, pos, axis="x", set=True):
+        if set == True:
+            exec(f"self.{name}.{axis} = {pos}")
+        else:
+            exec(f"self.{name}.{axis} += {pos}")
+    
     def scale_sprite(self, name, size):
         exec(f"self.{name}.width = {size[0]}")
         exec(f"self.{name}.height = {size[1]}")
 
     def rotate_sprite(self, name, dir):
         exec(f"self.{name}_rotation = {dir}")
-
-class Events:
-    def __init__(self):
-        self.MouseMotion = 4
-        self.MouseDown = 5
 
 class Text:
     def __init__(self, WIN):
@@ -69,6 +74,54 @@ class Text:
         RENDERED = FONT.render(text, 1, color)
         self.WIN.blit(RENDERED, pos)
 
+class Sound:
+    def __init__(self):
+        self.PAUSED = False
+    
+    def loadEffect(self, name, soundSrc):
+        exec(f"self.{name} = pygame.mixer.Sound('{soundSrc}')")
+    
+    def playEffect(self, name):
+        exec(f"self.{name}.play()")
+    
+    def effectVolume(self, name, set=True, volume=1):
+        if set == True:
+            exec(f"self.{name}.set_volume({volume})")
+        else:
+            return eval(f"self.{name}.get_volume()")
+    
+    def loadMusic(self, soundSrc):
+        pygame.mixer.music.load(soundSrc)
+    
+    def playMusic(self, startTime=0.0, loops=-1):
+        pygame.mixer.music.play(loops, startTime)
+    
+    def musicVolume(self, set=True, volume=1):
+        if set == True:
+            pygame.mixer.music.set_volume(volume)
+        else:
+            return pygame.mixer.music.get_volume()
+        
+    def musicTime(self, set=True, pos=0.0):
+        if set == True:
+            pygame.mixer.music.set_pos(pos)
+        else:
+            return pygame.mixer.music.get_pos()
+    
+    def pauseMusic(self):
+        if self.PAUSED == False:
+            pygame.mixer.music.pause()
+        else:
+            pygame.mixer.music.unpause()
+    
+    def stopMusic(self):
+        pygame.mixer.music.stop()
+
+class Events:
+    def __init__(self):
+        self.MouseMotion = 4
+        self.MouseDown = 5
+
 # Main Class
 
 class Game:
@@ -83,12 +136,11 @@ class Game:
         self.FPS = FPS
 
         self.sprites = Sprites(self.WIN)
-        self.events = Events()
         self.text = Text(self.WIN)
-        
+        self.sound = Sound()
+        self.events = Events()
+
         pygame.display.set_caption(TITLE)
-        pygame.font.init()
-        pygame.mixer.init()
     
     def handle_fps(self):
         clock = pygame.time.Clock()
@@ -136,7 +188,7 @@ class __Colors:
         self.PINK = (255, 179, 250)
     
     def hex_to_rgb(self, hex):
-        return __getColor(hex.strip("#"))
+        return getColor(hex.strip("#"))
 
 colors = __Colors()
 

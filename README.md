@@ -39,19 +39,40 @@ game = Game()
 
 `game.sprites.draw_shape(name, shape, color)` - Makes an invisible Sprite object visible in an shape form.
 
+`game.sprites.move_sprite(name, pos, axis, set)` - Moves a Sprite on a certain axis.
+
 `game.sprites.scale_sprite(name, size)` - Makes a Sprite's image object bigger/smaller.
 
 `game.sprites.rotate_sprite(name, dir)` - Turns a Sprite's image object.
-
-#### Event Variables
-`game.events.MouseMotion` - Returns the Pygame event for Mouse Motion.
-
-`game.events.MouseDown` - Returns the Pygame event for a Mouse Click.
 
 #### Text Subfunctions
 `game.text.preview(text, font, fontSize, pos, color)` - Returns a Pygame text object.
 
 `game.text.render(text, font, fontSize, pos, color)` - Renders a Pygame text object.
+
+#### Sound Subfunctions
+`loadEffect(name, soundSrc)` - Loads a Sound Effect.
+
+`playEffect(name)` - Plays the loaded Sound Effect.
+
+`effectVolume(name, set, volume)` - Gets/Sets the Effect Volume.
+
+`loadMusic(soundSrc)` - Loads Background Music.
+
+`playMusic(startTime, loops)` - Plays the loaded Background music.
+
+`musicVolume(set, volume)` - Gets/Sets the Music Volume.
+
+`musicTime(set, pos)` - Gets/Sets the Music Time.
+
+`pauseMusic()` - Pauses/Resumes the Music.
+
+`stopMusic()` - Stops the Music.
+
+#### Event Variables
+`game.events.MouseMotion` - Returns the Pygame event for Mouse Motion.
+
+`game.events.MouseDown` - Returns the Pygame event for a Mouse Click.
 
 #### Colors
 __**Defaults**__:
