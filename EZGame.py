@@ -135,7 +135,7 @@ class Events:
 # Main Class
 
 class Game:
-    def __init__(self, WIDTH: int = 900, HEIGHT: int = 500, TITLE: str = "EZ-Game Window", ICON = None, FPS: int = 60):
+    def __init__(self, WIDTH = 900, HEIGHT = 500, TITLE = "EZ-Game Window", ICON = None, FPS = 60):
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
         self.WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -178,7 +178,7 @@ class Game:
         else:
             return False
 
-    def set_cursor(self, cursor: str):
+    def set_cursor(self, cursor):
         exec(f"pygame.mouse.set_cursor(*pygame.cursors.{cursor})")
 
 # Colors

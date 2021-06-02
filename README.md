@@ -22,7 +22,7 @@ game = Game()
 #### Main Game Functions
 `game.handle_fps()` - Get better framerates by setting an FPS limit.
 
-`game.set_background(color)` - Set a background color for your window.
+`game.set_background(media, image)` - Set a background color for your window.
 
 `game.is_colliding(obj1, obj2)` - Returns a True/False statement telling you if 2 objects are colliding.
 
@@ -46,9 +46,9 @@ game = Game()
 `game.sprites.rotate_sprite(name, dir)` - Turns a Sprite's image object.
 
 #### Text Subfunctions
-`game.text.preview(text, font, fontSize, pos, color)` - Returns a Pygame text object.
+`game.text.preview(text, font, fontSize, ttf, color)` - Returns a Pygame text object.
 
-`game.text.render(text, font, fontSize, pos, color)` - Renders a Pygame text object.
+`game.text.render(text, font, fontSize, ttf, pos, color)` - Renders a Pygame text object.
 
 #### Sound Subfunctions
 `loadEffect(name, soundSrc)` - Loads a Sound Effect.
