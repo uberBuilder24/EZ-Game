@@ -64,13 +64,23 @@ class Text:
     def __init__(self, WIN):
         self.WIN = WIN
 
-    def preview(self, text, font="comicsans", fontSize=40, pos=(10, 10), color=(255, 255, 255)):
-        FONT = pygame.font.SysFont(font, fontSize)
+    def loadFont(self, file):
+        filename = os.path.basename(file).split(".")[0]
+        exec(f"self.{filename} = {file}")
+
+    def preview(self, text, font="comicsans", fontSize=40, ttf=False, color=(255, 255, 255)):
+        if ttf == False:
+            FONT = pygame.font.SysFont(font, fontSize)
+        else:
+            FONT = pygame.font.Font(font, fontSize)
         PREVIEW = FONT.render(text, 1, color)
         return PREVIEW
 
-    def render(self, text, font="comicsans", fontSize=40, pos=(10, 10), color=(255, 255, 255)):
-        FONT = pygame.font.SysFont(font, fontSize)
+    def render(self, text, font="comicsans", fontSize=40, ttf=False, pos=(10, 10), color=(255, 255, 255)):
+        if ttf == False:
+            FONT = pygame.font.SysFont(font, fontSize)
+        else:
+            FONT = pygame.font.Font(font, fontSize)
         RENDERED = FONT.render(text, 1, color)
         self.WIN.blit(RENDERED, pos)
 
