@@ -64,10 +64,6 @@ class Text:
     def __init__(self, WIN):
         self.WIN = WIN
 
-    def loadFont(self, file):
-        filename = os.path.basename(file).split(".")[0]
-        exec(f"self.{filename} = {file}")
-
     def preview(self, text, font="comicsans", fontSize=40, ttf=False, color=(255, 255, 255)):
         if ttf == False:
             FONT = pygame.font.SysFont(font, fontSize)
