@@ -79,16 +79,19 @@ __**Defaults**__:
 
 ```py
 colors.BLACK
-colors.WHITE
+colors.LIGHT_GRAY
+colors.DARK_GRAY
 colors.RED
 colors.ORANGE
 colors.YELLOW
 colors.GREEN
 colors.MINT
 colors.CYAN
+colors.SKY_BLUE
 colors.BLUE
 colors.PURPLE
 colors.PINK
+colors.WHITE
 ```
 
 __**Custom**__:

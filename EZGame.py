@@ -183,16 +183,19 @@ class Game:
 class __Colors:
     def __init__(self):
         self.BLACK = (0, 0, 0)
-        self.WHITE = (255, 255, 255)
+        self.LIGHT_GRAY = (176, 176, 176)
+        self.DARK_GRAY = (74, 74, 74)
         self.RED = (222, 33, 20)
         self.ORANGE = (255, 170, 0)
         self.YELLOW = (255, 255, 0)
         self.GREEN = (12, 235, 34)
         self.MINT = (97, 255, 202)
         self.CYAN = (34, 227, 224)
-        self.BLUE = (45, 141, 237)
+        self.SKY_BLUE = (135, 206, 235)
+        self.BLUE = (0, 128, 255)
         self.PURPLE = (150, 40, 235)
         self.PINK = (255, 179, 250)
+        self.WHITE = (255, 255, 255)
     
     def hex_to_rgb(self, hex):
         return getColor(hex.strip("#"))
