@@ -1,6 +1,6 @@
 # EZ-Game
 ## Description
-We made Pygame easy-to-use! Comes with window creation, sprite creation, sprite rendering, collision detections, and more! We made this library so we could shorten your 200 lines of code, to just 80 lines!
+I made Pygame easy-to-use! Comes with window creation, sprite creation, sprite rendering, collision detections, and more! I made this library so I could shorten your 200 lines of code, to just 80 lines!
 
 ## Documentation
 ### Installation
@@ -51,23 +51,23 @@ game = Game()
 `game.text.render(text, font, fontSize, ttf, pos, color)` - Renders a Pygame text object.
 
 #### Sound Subfunctions
-`loadEffect(name, soundSrc)` - Loads a Sound Effect.
+`game.sound.loadEffect(name, soundSrc)` - Loads a Sound Effect.
 
-`playEffect(name)` - Plays the loaded Sound Effect.
+`game.sound.playEffect(name)` - Plays the loaded Sound Effect.
 
-`effectVolume(name, set, volume)` - Gets/Sets the Effect Volume.
+`game.sound.effectVolume(name, set, volume)` - Gets/Sets the Effect Volume.
 
-`loadMusic(soundSrc)` - Loads Background Music.
+`game.sound.loadMusic(soundSrc)` - Loads Background Music.
 
-`playMusic(startTime, loops)` - Plays the loaded Background music.
+`game.sound.playMusic(startTime, loops)` - Plays the loaded Background music.
 
-`musicVolume(set, volume)` - Gets/Sets the Music Volume.
+`game.sound.musicVolume(set, volume)` - Gets/Sets the Music Volume.
 
-`musicTime(set, pos)` - Gets/Sets the Music Time.
+`game.sound.musicTime(set, pos)` - Gets/Sets the Music Time.
 
-`pauseMusic()` - Pauses/Resumes the Music.
+`game.sound.pauseMusic()` - Pauses/Resumes the Music.
 
-`stopMusic()` - Stops the Music.
+`game.sound.stopMusic()` - Stops the Music.
 
 #### Event Variables
 `game.events.MouseMotion` - Returns the Pygame event for Mouse Motion.
