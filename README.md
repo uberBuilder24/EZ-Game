@@ -1,6 +1,6 @@
 # EZ-Game
 ## Description
-I made Pygame easy-to-use! Comes with window creation, sprite creation, sprite rendering, collision detections, and more! I made this library so I could shorten your 200 lines of code, to just 80 lines!
+I made Pygame easy-to-use! Comes with window creation, sprite creation, sprite rendering, collision detections, and more! I made this library so I could shorten your 200 lines of code, to just 80 lines! (Credit: Pygame - the base library).
 
 ## Documentation
 ### Installation
