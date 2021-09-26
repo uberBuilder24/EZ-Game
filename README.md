@@ -5,78 +5,64 @@ I made Pygame easy-to-use! Comes with window creation, sprite creation, sprite r
 ## Documentation
 ### Installation
 It's very easy to setup. You just need to enter the following into your Command Line:
+
 ```sh
 cd /dir/to/project/
 git clone https://github.com/uberBuilder24/EZ-Game
 pip install -r requirements.txt
 ```
-After you download the source code and all dependencies, you you need to import the library. To do so, add:
-```py
-import pygame
-from EZGame import Game, colors
 
-game = Game()
+After you download the source code, you need to import the library. To do so, add `import pygame` and `import EZGame` to the top of your Python file. Make sure the `EZGame.py` file and the file you wish to use the library in are in the same directory. To initialize the library, add `game = EZGame.Game()` to your code.
+
+### Main Functions
+```py
+game.handle_fps() # Enables the FPS Limit
+game.set_background(media, image) # Sets the Background
+game.is_colliding(obj1, obj2) # Returns a Boolean Telling You If 2 Objects are Colliding
+game.is_hovering(obj) # Returns a Boolean Telling You If Your Mouse is Hovering Something
+game.key_pressed(pressed_keys, key) # Returns a Boolean Telling You If a Key Was Pressed
+game.set_cursor(cursor) # Sets the Cursor
 ```
 
-### Functions
-#### Main Game Functions
-`game.handle_fps()` - Get better framerates by setting an FPS limit.
+### Sprite Functions
+```py
+game.sprites.new_sprite(name, pos, size) # Creates an Invisible Sprite
+game.sprites.draw_sprite(name, imgSrc, dir, background, opacity) # Makes a Sprite Visible (Image Form)
+game.sprites.draw_shape(name, shape, color) # Makes a Sprite Visible (Shape Form)
+game.sprites.move_sprite(name, pos, axis, set) # Moves a Sprite
+game.sprites.scale_sprite(name, size) # Makes a Sprite Bigger/Smaller
+game.sprites.rotate_sprite(name, dir) # Rotates a Sprite
+```
 
-`game.set_background(media, image)` - Set a background color for your window.
+If the `background` parameter for the `draw_sprite` function is set to `False`, the transparent background of the sprite will work properly. However, if it's set to `True`, you will be able to fade the sprite.
 
-`game.is_colliding(obj1, obj2)` - Returns a True/False statement telling you if 2 objects are colliding.
+### Text Functions
+```py
+game.text.preview(text, font, fontSize, ttf, color) # Returns a Text Object
+game.text.render(text, font, fontSize, ttf, pos, color) # Renders a Text Object
+```
 
-`game.is_hovering(obj)` - Returns a True/False statement telling you if the mouse is hovering something.
+### Sound Functions
+```py
+game.sound.loadEffect(name, soundSrc) # Loads a Sound Effect
+game.sound.playEffect(name) # Plays the Loaded Sound Effect
+game.sound.effectVolume(name, set, volume) # Gets/Sets the Sound Effect Volume
+game.sound.loadMusic(soundSrc) # Loads Background Music
+game.sound.playMusic(startTime, loops) # Plays the Loaded Background Music
+game.sound.musicVolume(set, volume) # Gets/Sets the Music Volume
+game.sound.musicTime(set, pos) # Gets/Sets the Music Time
+game.sound.pauseMusic() # Pauses/Resumes the Music
+game.sound.stopMusic() # Stops the Music
+```
 
-`game.key_pressed(pressed_keys, key)` - Returns a True/False statement telling you if a certain key was pressed.
+### Event Variables
+```py
+game.events.MouseMotion # Returns the Pygame Event for Mouse Motion
+game.events.MouseDown # Returns the Pygame Event for Mouse Motion
+```
 
-`game.set_cursor(cursor)` - Sets your cursor to be different from the classic arrow.
-
-#### Sprite Subfunctions
-`game.sprites.new_sprite(name, pos, size)` - Creates an invisible Sprite object.
-
-`game.sprites.draw_sprite(name, imgSrc, dir, background, opacity)` - Makes an invisible Sprite object visible in an image form. The 'background' boolean will choose if you want a transparent background, or to be able to fade the image. Sadly, they don't work together.
-
-`game.sprites.draw_shape(name, shape, color)` - Makes an invisible Sprite object visible in an shape form.
-
-`game.sprites.move_sprite(name, pos, axis, set)` - Moves a Sprite on a certain axis.
-
-`game.sprites.scale_sprite(name, size)` - Makes a Sprite's image object bigger/smaller.
-
-`game.sprites.rotate_sprite(name, dir)` - Turns a Sprite's image object.
-
-#### Text Subfunctions
-`game.text.preview(text, font, fontSize, ttf, color)` - Returns a Pygame text object.
-
-`game.text.render(text, font, fontSize, ttf, pos, color)` - Renders a Pygame text object.
-
-#### Sound Subfunctions
-`game.sound.loadEffect(name, soundSrc)` - Loads a Sound Effect.
-
-`game.sound.playEffect(name)` - Plays the loaded Sound Effect.
-
-`game.sound.effectVolume(name, set, volume)` - Gets/Sets the Effect Volume.
-
-`game.sound.loadMusic(soundSrc)` - Loads Background Music.
-
-`game.sound.playMusic(startTime, loops)` - Plays the loaded Background music.
-
-`game.sound.musicVolume(set, volume)` - Gets/Sets the Music Volume.
-
-`game.sound.musicTime(set, pos)` - Gets/Sets the Music Time.
-
-`game.sound.pauseMusic()` - Pauses/Resumes the Music.
-
-`game.sound.stopMusic()` - Stops the Music.
-
-#### Event Variables
-`game.events.MouseMotion` - Returns the Pygame event for Mouse Motion.
-
-`game.events.MouseDown` - Returns the Pygame event for a Mouse Click.
-
-#### Colors
-__**Defaults**__:
-
+### Colors
+#### Defaults
 ```py
 colors.BLACK
 colors.LIGHT_GRAY
@@ -94,6 +80,5 @@ colors.PINK
 colors.WHITE
 ```
 
-__**Custom**__:
-
+#### Custom
 `colors.hex_to_rgb(hex)` - Turns a HEX code (#ff0000) into a RGB code that works with EZ-Game.
